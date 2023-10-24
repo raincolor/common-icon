@@ -1,0 +1,11 @@
+<template>
+  <Icon :class="['icon', enableOriginColor ? '' : 'current-color']" />
+</template>
+
+<script setup lang="ts">
+  import Icon from '../svg/${folder}/${svgName}.svg?component';
+  defineOptions({
+    name: '${ComponentName}',
+  });
+  defineProps({ enableOriginColor: Boolean });
+</script>

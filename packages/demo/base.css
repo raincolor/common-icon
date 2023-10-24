@@ -1,0 +1,12 @@
+
+
+@media (width >= 1920px) {
+  :root {
+    --vp-layout-max-width: 1920px;
+  }
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+.VPDoc.has-aside .content-container {
+  max-width: 1280px !important;
+}

@@ -1,7 +1,6 @@
-# Basicai Icons Components
+# cc Icons Components
 
-basicai 的 icon 组件库，icon来源：[icon BasicAI组件规范](https://www.figma.com/file/Ds0Z1s3pYnQnt28IKHEuK8/BasicAI%E7%BB%84%E4%BB%B6%E8%A7%84%E8%8C%83?type=design)  
-文档使用vitePress  
+
   
 目录结构
 ```
@@ -29,14 +28,14 @@ packages // 组件源码
 **前置条件**
 
 安装  
-> yarn add  @basicai/icons
+> yarn add  ccicons
 
 全局引入  
 ```
 // main.ts
 import { createApp } from 'vue'
 import App from './App.vue'
-import Icons from '@basicai/icons';
+import Icons from 'ccicons';
 
 const app = createApp(App);
 app.use(Icons);
@@ -55,7 +54,7 @@ app.mount('#app');
 </template>
 
 <script setup lang="ts">
-import {IconHome} from '@basicai/icons';
+import {IconHome} from 'ccicons';
 </script>
 ```
 
