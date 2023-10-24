@@ -20,4 +20,4 @@ jobs:
       - run: npm ci
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: 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
+          NODE_AUTH_TOKEN: gitnpm_F0aVfU9CtBCvoJZ9sNGLZWxQymG5Ld4EMMVd
