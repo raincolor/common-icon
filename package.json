@@ -1,5 +1,5 @@
 {
-  "name": "ccicons",
+  "name": "tcwicons",
   "version": "1.0.0",
   "module": "lib/index.mjs",
   "typings": "types/index.d.ts",
@@ -44,5 +44,10 @@
     "index.js",
     "lib/*",
     "types/*"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raincolor/common-icon"
+  }
+  
 }

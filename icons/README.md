@@ -28,14 +28,14 @@ packages // 组件源码
 **前置条件**
 
 安装  
-> yarn add  ccicons
+> yarn add  tcwicons
 
 全局引入  
 ```
 // main.ts
 import { createApp } from 'vue'
 import App from './App.vue'
-import Icons from 'ccicons';
+import Icons from 'tcwicons';
 
 const app = createApp(App);
 app.use(Icons);
@@ -54,7 +54,7 @@ app.mount('#app');
 </template>
 
 <script setup lang="ts">
-import {IconHome} from 'ccicons';
+import {IconHome} from 'tcwicons';
 </script>
 ```
 

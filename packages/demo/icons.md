@@ -19,7 +19,7 @@ yarn add icons
 </template>
 
 <script setup lang="ts">
-import {IconHome} from 'ccicons';
+import {IconHome} from 'tcwicons';
 </script>
 ```
 
@@ -27,7 +27,7 @@ import {IconHome} from 'ccicons';
 // main.ts
 import { createApp } from 'vue'
 import App from './App.vue'
-import Icons from 'ccicons';
+import Icons from 'tcwicons';
 
 const app = createApp(App);
 app.use(Icons);

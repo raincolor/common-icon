@@ -108,7 +108,7 @@ function start(dir = '.'): void {
     fs.writeFileSync(p.join(comOutDir, `icons-categories.json`), JSON.stringify(iconsCategories), 'utf8');
     
   } catch (e) {
-    l('ccicons failed to create svg components');
+    l('tcwicons failed to create svg components');
     throw e;
   }
 
@@ -122,6 +122,6 @@ try {
   // Run command or show usage for unknown command
   start(x)
 } catch (e) {
-  console.error(e instanceof Error ? `ccicons - ${e.message}` : e)
+  console.error(e instanceof Error ? `tcwicons - ${e.message}` : e)
   process.exit(1)
 }
