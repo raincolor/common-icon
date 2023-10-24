@@ -20,4 +20,4 @@ jobs:
       - run: npm ci
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: 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
+          NODE_AUTH_TOKEN: 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
