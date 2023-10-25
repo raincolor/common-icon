@@ -3,7 +3,7 @@
 
 目录结构
 ```
-docs // vitePress 文档配置目录
+docs // vitePress 文档配置目录1
 resources // svg资源目录
 lib // 组件编译输出目录
 scripts // 处理resources资源生成组件到packages的脚本和模板
