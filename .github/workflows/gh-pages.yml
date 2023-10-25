@@ -1,25 +1,19 @@
-# 以下以一个构建vue项目的yml文件为例子
-name: CI
- 
+name: GitHub Actions Build and Deploy Demo
 on:
-    push:
-        branches:
-            - main # 这里只配置了main分支，所以只有推送main分支才会触发以下任务
+  push:
+    branches:
+      - master
 jobs:
-    build-and-deploy:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v3
-            - name: Use Node.js
-              uses: actions/setup-node@v3
-              with:
-                  node-version: "16.x"
-            - run: node -v
-            
-            - name: Deploy # 部署
-              uses: JamesIves/github-pages-deploy-action@v4.3.3
-              with:
-                  branch: gh-pages # 部署后提交到那个分支
-                  folder: dist # 这里填打包好的目录名称
-              env:
-                  ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Build and Deploy
+      uses: JamesIves/github-pages-deploy-action@master
+      env:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: build
+        BUILD_SCRIPT: npm ci && npm run docs:build
