@@ -9,9 +9,9 @@ import VueMacros from 'unplugin-vue-macros/vite';
 export default defineConfig({
   srcDir: '../packages',
   outDir:'../dist',
-  base: './',
+  base: '/common-icon',
   vite: {
-    base: './',
+   
     // 需要配置vite插件（内置了vue插件），因为vitepress不会去查找vite.config.ts的配置
     plugins: [svgLoader(), cssInjectedByJsPlugin(), 
       VueMacros({
