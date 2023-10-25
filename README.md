@@ -1,7 +1,7 @@
 #  Icons Components
 
 
-目录结构test
+目录结构
 ```
 docs // vitePress 文档配置目录
 resources // svg资源目录
