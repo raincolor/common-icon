@@ -8,6 +8,7 @@ import VueMacros from 'unplugin-vue-macros/vite';
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   srcDir: '../packages',
+  outDir:'../dist',
   vite: {
     // 需要配置vite插件（内置了vue插件），因为vitepress不会去查找vite.config.ts的配置
     plugins: [svgLoader(), cssInjectedByJsPlugin(), 
