@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: "icons------"
+  name: "tcwicons"
   text: ""
   tagline: use vitepress docs
   actions:

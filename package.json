@@ -59,5 +59,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/raincolor/common-icon"
-  }
+  },
+  "homepage": "https://raincolor.github.io/common-icon/"
 }
