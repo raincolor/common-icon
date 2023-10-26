@@ -11,7 +11,7 @@
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "build:types": "node scripts/build-types.js",
-    "prepublish": "npm run build",
+    "prepare": "npm run build",
     "release": "semantic-release"
   },
   "dependencies": {
