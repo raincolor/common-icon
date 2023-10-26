@@ -33,10 +33,10 @@ jobs:
       #   run: |
       #     npm run build
 
-         # 打包你的插件/组件/库等等等
-      - name: fix
-        run: |
-          npm run fix
+       
+      # - name: fix
+      #   run: |
+      #     npm run fix
      
 
       # 执行 semantic-release 发布包
