@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/raincolor/common-icon/compare/v1.0.0...v1.1.0) (2023-10-26)
+
+
+### Features
+
+* test ([ab44518](https://github.com/raincolor/common-icon/commit/ab4451813f4997267b65443fd83a22f1905d4046))
+
 # 1.0.0 (2023-10-26)
 
 
