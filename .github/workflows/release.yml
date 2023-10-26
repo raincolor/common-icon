@@ -33,10 +33,16 @@ jobs:
       #   run: |
       #     npm run build
 
+         # 打包你的插件/组件/库等等等
+      - name: fix
+        run: |
+          npm run fix
+     
+
       # 执行 semantic-release 发布包
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
+        run: npm run release
 
