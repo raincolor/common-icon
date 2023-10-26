@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/raincolor/common-icon/compare/v1.3.0...v1.4.0) (2023-10-26)
+
+
+### Features
+
+* update readme.md ([4acf9c5](https://github.com/raincolor/common-icon/commit/4acf9c5db73b9e350a2582fb5078bf4112fc5222))
+
 # [1.3.0](https://github.com/raincolor/common-icon/compare/v1.2.0...v1.3.0) (2023-10-26)
 
 
