@@ -1,4 +1,4 @@
-# cc Icons Components
+# Icons Components
 
 
   

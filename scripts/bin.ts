@@ -6,7 +6,7 @@ import fs = require('fs');
 import p = require('path');
 
 // Logger
-const l = (msg: string): void => console.log(`cc/icons - ${msg}`);
+const l = (msg: string): void => console.log(`tcwicons - ${msg}`);
 
 function saveSvgFile(svgDir, svgOutRoot, svgOutFolder, comOutDir, fileName, template) {
   const svg = fs.readFileSync(p.join(svgDir,fileName),'utf8');

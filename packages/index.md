@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: "icons"
+  name: "icons------"
   text: ""
   tagline: use vitepress docs
   actions:
