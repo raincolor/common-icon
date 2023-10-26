@@ -1,3 +1,11 @@
+# [1.2.0](https://github.com/raincolor/common-icon/compare/v1.1.0...v1.2.0) (2023-10-26)
+
+
+### Features
+
+* test ([000a714](https://github.com/raincolor/common-icon/commit/000a7140fdcb86b71070c513073053d6805be6a3))
+* 修复发包流程 ([e6acf19](https://github.com/raincolor/common-icon/commit/e6acf1909069684b92cdf0cc56dd6c7dfb1be8c4))
+
 # [1.1.0](https://github.com/raincolor/common-icon/compare/v1.0.0...v1.1.0) (2023-10-26)
 
 
