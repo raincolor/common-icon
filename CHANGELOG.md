@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/raincolor/common-icon/compare/v1.2.0...v1.3.0) (2023-10-26)
+
+
+### Features
+
+* 添加 文档构建  github pages ([5c786da](https://github.com/raincolor/common-icon/commit/5c786dac8606fb43d5f5fda8b90210c78cd1d677))
+
 # [1.2.0](https://github.com/raincolor/common-icon/compare/v1.1.0...v1.2.0) (2023-10-26)
 
 
