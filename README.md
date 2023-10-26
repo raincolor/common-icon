@@ -2,7 +2,7 @@
 
 
   
-目录 结构
+目录 结 构
 ```
 docs // vitePress 文档配置目录
 resources // svg资源目录
