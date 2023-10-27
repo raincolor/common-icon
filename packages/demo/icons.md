@@ -4,7 +4,7 @@ outline: deep
 ## Install
 
 ```cmd
-yarn add icons  
+yarn add tcwicons  
 ```
    
    
