@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/raincolor/common-icon/compare/v1.6.0...v1.7.0) (2023-11-03)
+
+
+### Features
+
+* 添加h-com-linters 代码校验 ([cee4717](https://github.com/raincolor/common-icon/commit/cee471761fc249a20b0bf2180c2c3ab2c3c42f5f))
+
 # [1.6.0](https://github.com/raincolor/common-icon/compare/v1.5.0...v1.6.0) (2023-11-03)
 
 
