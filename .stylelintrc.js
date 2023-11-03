@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['stylelint-config-standard', 'stylelint-config-standard-vue'],
+  extends: ['stylelint-config-standard-vue'],
   plugins: ['stylelint-order'],
   // 不同格式的文件指定自定义语法
   overrides: [
@@ -14,6 +14,7 @@ module.exports = {
   ],
   ignoreFiles: ['**/*.js', '**/*.jsx', '**/*.tsx', '**/*.ts', '**/*.json', '**/*.md', '**/*.yaml'],
   rules: {
+    'color-hex-length': 'long',
     'no-descending-specificity': null, // 禁止在具有较高优先级的选择器后出现被其覆盖的较低优先级的选择器
     'selector-pseudo-element-no-unknown': [
       true,
@@ -24,7 +25,7 @@ module.exports = {
     'selector-pseudo-class-no-unknown': [
       true,
       {
-        ignorePseudoClasses: ['deep', 'global'],
+        ignorePseudoClasses: ['deep', 'global', 'export'],
       },
     ],
     // 不允许使用位置函数，除ignoreFunctions数组下的元素
@@ -32,6 +33,7 @@ module.exports = {
       true,
       {
         ignoreFunctions: [
+          'v-bind',
           'if',
           'boolean',
           'escape',

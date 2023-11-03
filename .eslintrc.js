@@ -26,6 +26,10 @@ module.exports = defineConfig({
     'prettier',
   ],
   rules: {
+    //     To change a rule’s severity, set the rule ID equal to one of these values:
+    // "off" or 0 - turn the rule off
+    // "warn" or 1 - turn the rule on as a warning (doesn’t affect exit code)
+    // "error" or 2 - turn the rule on as an error (exit code is 1 when triggered)
     // eslint未定义检测关闭（解决eslint报错：https://www.reddit.com/r/vuejs/comments/x9utfh/eslint_error_with_global_type_definitions/），但是TS编译器依然会检测
     'no-undef': 'off',
     'no-use-before-define': 'off',
@@ -36,7 +40,7 @@ module.exports = defineConfig({
     'no-prototype-builtins': 'warn',
     'no-var': 'error',
     'vue/valid-v-for': 'warn',
-    'vue/no-unused-vars': 'warn',
+    'vue/no-unused-vars': 'error',
     'vue/require-v-for-key': 'warn',
     'vue/attributes-order': 'off',
     'vue/v-on-event-hyphenation': 'off',
@@ -51,7 +55,7 @@ module.exports = defineConfig({
     'vue/no-mutating-props': 'warn',
     '@typescript-eslint/no-this-alias': 'off',
     '@typescript-eslint/ban-ts-ignore': 'off',
-    '@typescript-eslint/no-unused-vars': 'warn',
+    '@typescript-eslint/no-unused-vars': ['error', { vars: 'all', args: 'none' }],
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-var-requires': 'off',
