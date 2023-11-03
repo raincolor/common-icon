@@ -1,3 +1,11 @@
+# [1.6.0](https://github.com/raincolor/common-icon/compare/v1.5.0...v1.6.0) (2023-11-03)
+
+
+### Features
+
+* update package.json ([dff9411](https://github.com/raincolor/common-icon/commit/dff9411f8c1c320909f6b145233be3e208d9019a))
+* 添加 lock 文件 及构建 ([0c56e75](https://github.com/raincolor/common-icon/commit/0c56e7506faf124e1d5c230651501c55a8d85d6b))
+
 # [1.5.0](https://github.com/raincolor/common-icon/compare/v1.4.0...v1.5.0) (2023-10-27)
 
 
