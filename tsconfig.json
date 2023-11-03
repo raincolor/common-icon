@@ -17,11 +17,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-
-    //生成类型声明文件, 在package.json的typings指定类型声明入口
-    "declaration": true,
-    "declarationDir": "./types",
-    "emitDeclarationOnly": true,
+ 
+    //生成类型声明文件, 在package.json的typings指定类型声明入口   tsc-p ./tsconfig.json --emitDeclarationOnly
+    "declaration": true,// 自动生成声明文件
+    "declarationDir": "./typs",// 声明文件生成的目录
+    "emitDeclarationOnly": true, // 只输出声明文件(ts 产物)
 
     "allowSyntheticDefaultImports": true,
     "types": ["unplugin-vue-macros/macros-global" /* ... */]

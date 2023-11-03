@@ -5,7 +5,7 @@
   "typings": "types/index.d.ts",
   "scripts": {
     "dev": "vite",
-    "build": "tsc ./scripts/bin.ts --outDir ./lib && node lib/bin && vue-tsc && vite build",
+    "build": "tsc ./scripts/bin.ts --outDir ./lib  && node lib/bin && vue-tsc && vite build",
     "preview": "vite preview",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
@@ -65,6 +65,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/raincolor/common-icon"
-  },
+  }
  
 }
