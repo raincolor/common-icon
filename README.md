@@ -27,6 +27,9 @@ packages // 组件源码
 
  [文档说明](https://raincolor.github.io/common-icon/)
 
+ [设计思路]( https://juejin.cn/post/7295169886177951753)
+
+
 安装  
 > yarn add  tcwicons
 
