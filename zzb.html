@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>亲友礼金记账本</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 8px;
+            padding-bottom: 12px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 20px;
+            text-align: center;
+        }
+
+        .book-selector {
+            margin: 0;
+        }
+
+        .book-selector select {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            cursor: pointer;
+        }
+
+        .book-selector select option {
+            background: #667eea;
+            color: white;
+        }
+
+        .search-section {
+            padding: 5px 20px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .search-item {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .search-label-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .search-label {
+            font-size: 12px;
+            color: #6c757d;
+            margin-bottom: 5px;
+            display: block;
+            white-space: nowrap;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+            box-sizing: border-box;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .sort-buttons {
+            display: flex;
+            
+            gap: 4px;
+        }
+
+        .sort-btn {
+            border: 1px solid #e0e3ff;
+            background: #f1f3ff;
+            color: #667eea;
+            border-radius: 12px;
+            padding: 2px 8px;
+            font-size: 12px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .sort-btn.active {
+            background: #667eea;
+            color: #ffffff;
+        }
+
+        .stats {
+            padding: 5px 20px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+            text-align: center;
+            font-size: 14px;
+            color: #495057;
+        }
+
+        .stats-text {
+            line-height: 1.5;
+        }
+
+        .stat-highlight {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .records-section {
+            padding: 10px 16px;
+            max-height: calc(100vh - 180px);
+            overflow-y: auto;
+        }
+
+        .record-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px;
+            margin-bottom: 8px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .record-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .record-name {
+            font-size: 16px;
+            font-weight: 500;
+            color: #212529;
+        }
+
+        .record-amount {
+            font-size: 18px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 30px 20px;
+            color: #6c757d;
+            font-size: 16px;
+        }
+
+        .book-info {
+            display: none;
+        }
+
+        /* 滚动条样式 */
+        .records-section::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .records-section::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .records-section::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 10px;
+        }
+
+        .records-section::-webkit-scrollbar-thumb:hover {
+            background: #5568d3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="book-selector">
+                <select id="bookSelect">
+                    <option value="0">2025年4月6日 曾希沅百日宴</option>
+                    <option value="1">账本二</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="book-info" id="bookInfo">
+            2025年4月6日 曾希沅百日宴
+        </div>
+
+        <div class="search-section">
+            <div class="search-box">
+                <div class="search-item">
+                    <label class="search-label">姓名模糊搜索</label>
+                    <input type="text" id="nameSearchInput" class="search-input" placeholder="输入姓名或包含的字...">
+                </div>
+                <div class="search-item">
+                    <div class="search-label-row">
+                        <label class="search-label">金额搜索</label>
+                        <div class="sort-buttons">
+                            <button type="button" class="sort-btn" data-dir="asc">升序</button>
+                            <button type="button" class="sort-btn" data-dir="desc">降序</button>
+                        </div>
+                    </div>
+                    <input type="text" id="amountSearchInput" class="search-input" placeholder="输入金额...">
+                </div>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stats-text" id="statsText">
+                总计 <span class="stat-highlight" id="totalCount">0</span> 位亲友参加，收到 <span class="stat-highlight" id="totalAmount">0</span> 元
+            </div>
+        </div>
+
+        <div class="records-section" id="recordsSection">
+            <!-- 记录将在这里动态生成 -->
+        </div>
+    </div>
+
+    <script>
+        // 账本数据
+        const accountBooks = [
+            {
+                name: "2025年4月6日 曾希沅百日宴",
+                records: [
+                    { name: "岳金禄", amount: 200 },
+                    { name: "钟宇元", amount: 600 },
+                    { name: "陈龙村", amount: 300 },
+                    { name: "钟中伦", amount: 400 },
+                    { name: "谢金元", amount: 300 },
+                    { name: "张学友", amount: 800 },
+                    { name: "桂敏", amount: 600 },
+                    { name: "汪华菊", amount: 600 },
+                    { name: "唐永明", amount: 300 },
+                    { name: "曾维跃", amount: 300 },
+                    { name: "欧文祥", amount: 500 },
+                    { name: "腾跃炳", amount: 1000 },
+                    { name: "曾维志", amount: 300 },
+                    { name: "刘光满", amount: 400 },
+                    { name: "苏大培", amount: 300 },
+                    { name: "唐二娃", amount: 300 },
+                    { name: "何善敏", amount: 300 },
+                    { name: "肖潜", amount: 400 },
+                    { name: "王平", amount: 500 },
+                    { name: "梁超", amount: 400 },
+                    { name: "丁大禹", amount: 600 },
+                    { name: "张珠", amount: 300 },
+                    { name: "李永远", amount: 300 },
+                    { name: "刘光萍", amount: 600 },
+                    { name: "王纯芬", amount: 300 },
+                    { name: "廖兴忠", amount: 500 },
+                    { name: "王纯群", amount: 500 },
+                    { name: "蔡顶中", amount: 500 },
+                    { name: "曾秦", amount: 300 },
+                    { name: "谭诗会", amount: 200 },
+                    { name: "陈庆生", amount: 600 },
+                    { name: "张琳", amount: 500 },
+                    { name: "廖伟", amount: 500 },
+                    { name: "黄万强", amount: 500 },
+                    { name: "万东明", amount: 500 },
+                    { name: "刘菊", amount: 300 },
+                    { name: "周永辉", amount: 400 },
+                    { name: "何善强", amount: 500 },
+                    { name: "娄安云", amount: 400 },
+                    { name: "何勇", amount: 400 },
+                    { name: "李永良", amount: 400 },
+                    { name: "陈伟", amount: 400 },
+                    { name: "李宁", amount: 500 },
+                    { name: "黄礼国", amount: 300 },
+                    { name: "皮志国", amount: 400 },
+                    { name: "明声波", amount: 500 },
+                    { name: "马芬", amount: 400 },
+                    { name: "欧涛", amount: 500 },
+                    { name: "黄健伟", amount: 800 },
+                    { name: "蔡泉林", amount: 600 },
+                    { name: "汪华茂", amount: 400 },
+                    { name: "谭诗全", amount: 300 },
+                    { name: "谭诗维", amount: 400 },
+                    { name: "曾维贤", amount: 200 },
+                    { name: "欧武汉", amount: 400 },
+                    { name: "官爱民", amount: 600 },
+                    { name: "徐钦", amount: 400 },
+                    { name: "严从修", amount: 800 },
+                    { name: "谢代贤", amount: 300 },
+                    { name: "何善丽", amount: 300 },
+                    { name: "谭良忠", amount: 500 },
+                    { name: "杨兴建", amount: 400 },
+                    { name: "曾维君", amount: 300 },
+                    { name: "彭祖友", amount: 300 },
+                    { name: "钟昌浩", amount: 500 },
+                    { name: "周德旺", amount: 200 },
+                    { name: "陆春华", amount: 500 },
+                    { name: "朱方超", amount: 1200 },
+                    { name: "李宇", amount: 600 },
+                    { name: "黄强", amount: 400 },
+                    { name: "马二", amount: 300 },
+                    { name: "曾永足", amount: 600 },
+                    { name: "王纯富", amount: 300 },
+                    { name: "罗映", amount: 300 },
+                    { name: "曾幺妹", amount: 500 },
+                    { name: "熊开劲", amount: 500 },
+                    { name: "肖兰", amount: 500 },
+                    { name: "韩休明", amount: 500 },
+                    { name: "丁大英", amount: 500 },
+                    { name: "孙财德", amount: 500 },
+                    { name: "曾维洪", amount: 1200 },
+                    { name: "刘开万", amount: 600 },
+                    { name: "荣廷余", amount: 200 },
+                    { name: "马三", amount: 300 },
+                    { name: "胡宝学", amount: 800 },
+                    { name: "钟宇志", amount: 400 },
+                    { name: "钟传明", amount: 800 },
+                    { name: "肖华", amount: 400 },
+                    { name: "何善金", amount: 500 },
+                    { name: "祝二哥", amount: 600 },
+                    { name: "长友", amount: 600 },
+                    { name: "曾永亮", amount: 500 },
+                    { name: "万银川", amount: 1288.88 },
+                    { name: "徐大福", amount: 600 },
+                    { name: "钟传伟", amount: 600 },
+                    { name: "谢成容", amount: 800 },
+                    { name: "曾永鸿", amount: 600 },
+                    { name: "刘毓利", amount: 800 },
+                    { name: "刘光伟", amount: 600 },
+                    { name: "汪四", amount: 500 },
+                    { name: "汪三", amount: 400 },
+                    { name: "曾维伦", amount: 300 },
+                    { name: "肖悫", amount: 2000 },
+                    { name: "徐玉娇", amount: 600 },
+                    { name: "曾维英", amount: 1200 }
+                ]
+            },
+            {
+                name: "账本二",
+                records: [
+                { name: "xxx", amount: 1200 }
+                ]
+            }
+        ];
+
+        let currentBookIndex = 0;
+        let filteredRecords = [];
+        let currentSortDirection = 'none';
+
+        // DOM 元素
+        const bookSelect = document.getElementById('bookSelect');
+        const bookInfo = document.getElementById('bookInfo');
+        const nameSearchInput = document.getElementById('nameSearchInput');
+        const amountSearchInput = document.getElementById('amountSearchInput');
+        const recordsSection = document.getElementById('recordsSection');
+        const totalCountEl = document.getElementById('totalCount');
+        const totalAmountEl = document.getElementById('totalAmount');
+        const statsTextEl = document.getElementById('statsText');
+        const sortButtons = document.querySelectorAll('.sort-btn');
+
+        // 初始化
+        function init() {
+            loadBook(currentBookIndex);
+            setupEventListeners();
+        }
+
+        // 设置事件监听
+        function setupEventListeners() {
+            // 账本切换
+            bookSelect.addEventListener('change', (e) => {
+                currentBookIndex = parseInt(e.target.value);
+                loadBook(currentBookIndex);
+                nameSearchInput.value = '';
+                amountSearchInput.value = '';
+                filterRecords();
+            });
+
+            // 姓名搜索输入
+            nameSearchInput.addEventListener('input', () => {
+                filterRecords();
+            });
+
+            // 金额搜索输入
+            amountSearchInput.addEventListener('input', () => {
+                filterRecords();
+            });
+
+            // 金额排序按钮
+            sortButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const dir = btn.dataset.dir;
+                    if (currentSortDirection === dir) {
+                        // 再次点击同一个按钮，取消排序
+                        currentSortDirection = 'none';
+                        sortButtons.forEach(b => b.classList.remove('active'));
+                    } else {
+                        currentSortDirection = dir;
+                        sortButtons.forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                    }
+                    filterRecords();
+                });
+            });
+        }
+
+        // 加载账本
+        function loadBook(index) {
+            const book = accountBooks[index];
+            bookInfo.textContent = book.name;
+            filteredRecords = [...book.records];
+            displayRecords();
+            updateStats();
+        }
+
+        // 过滤记录
+        function filterRecords() {
+            const book = accountBooks[currentBookIndex];
+            const nameQuery = nameSearchInput.value.trim();
+            const amountQuery = amountSearchInput.value.trim();
+
+            let results = [...book.records];
+
+            // 姓名模糊搜索
+            if (nameQuery) {
+                results = results.filter(record =>
+                    record.name.includes(nameQuery)
+                );
+            }
+
+            // 金额精确搜索
+            if (amountQuery) {
+                const amount = parseFloat(amountQuery);
+                if (!isNaN(amount)) {
+                    results = results.filter(record =>
+                        record.amount === amount
+                    );
+                } else {
+                    results = [];
+                }
+            }
+
+            // 金额排序
+            if (currentSortDirection === 'asc') {
+                results.sort((a, b) => a.amount - b.amount);
+            } else if (currentSortDirection === 'desc') {
+                results.sort((a, b) => b.amount - a.amount);
+            }
+
+            filteredRecords = results;
+            displayRecords();
+            updateStats();
+        }
+
+        // 显示记录
+        function displayRecords() {
+            if (filteredRecords.length === 0) {
+                recordsSection.innerHTML = '<div class="no-results">暂无匹配的记录</div>';
+                return;
+            }
+
+            recordsSection.innerHTML = filteredRecords
+                .map(record => `
+                    <div class="record-item">
+                        <div class="record-name">${record.name}</div>
+                        <div class="record-amount">${record.amount}元</div>
+                    </div>
+                `)
+                .join('');
+        }
+
+        // 更新统计信息
+        function updateStats() {
+            const book = accountBooks[currentBookIndex];
+            const totalCount = book.records.length;
+            const totalAmount = book.records.reduce((sum, record) => sum + record.amount, 0);
+
+            totalCountEl.textContent = totalCount;
+            totalAmountEl.textContent = totalAmount.toFixed(2);
+        }
+
+        // 启动应用
+        init();
+    </script>
+</body>
+</html>
