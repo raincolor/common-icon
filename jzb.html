@@ -917,7 +917,7 @@
                     { "name": "郭跃强", "amount": 1000 },
                     { "name": "刘光平", "amount": 500 },
                     { "name": "欧文祥", "amount": 500 },
-                   
+
                     { "name": "蔡泉林", "amount": 600 },
                     { "name": "谭诗全", "amount": 300 },
                     { "name": "谭诗维", "amount": 400 },
@@ -1103,6 +1103,38 @@
                     { "name": "马英", "amount": 1200 },
                     { "name": "苏建坤", "amount": 200 }
                 ]
+            },
+            {
+                name: "2020年4月12日 骨折住院收礼",
+                records: [
+                    [
+                        { "name": "汪华菊", "amount": 500 },
+                        { "name": "幺妈", "amount": 300 },
+                        { "name": "刘家伦", "amount": 400 },
+                        { "name": "熊开劲", "amount": 400 },
+                        { "name": "王萍", "amount": 0, "note": "牛奶、水果" },
+                        { "name": "钟守志", "amount": 200 },
+                        { "name": "滕跃炳", "amount": 200 },
+                        { "name": "曾维智", "amount": 0, "note": "土鸡蛋、土鸡" },
+                        { "name": "万银川", "amount": 888.88 },
+                        { "name": "邹梦", "amount": 0, "note": "水果" },
+                        { "name": "钟守员", "amount": 400 },
+                        { "name": "刘毓利", "amount": 400 },
+                        { "name": "严万云", "amount": 300 },
+                        { "name": "丁大英", "amount": 300 },
+                        { "name": "谢长碧", "amount": 200 },
+                        { "name": "祝二哥", "amount": 300 },
+                        { "name": "曾维贤", "amount": 200 },
+                        { "name": "谢金元", "amount": 400 },
+                        { "name": "刘光萍", "amount": 300 },
+                        { "name": "曾泰", "amount": 200 },
+                        { "name": "蔡泉林", "amount": 400 },
+                        { "name": "王三姐", "amount": 300 },
+                        { "name": "丁长友", "amount": 500 },
+                        { "name": "唐朝英", "amount": 200 },
+                        { "name": "陈龙村", "amount": 300 },
+                        { "name": "陈龙方", "amount": 0, "note": "水果" }
+                    ]]
             }
 
         ];
@@ -1223,7 +1255,12 @@
             }
 
             recordsSection.innerHTML = filteredRecords
-                .map(record => `
+                .map(record =>record.note ? `
+                    <div class="record-item">
+                        <div class="record-name">${record.name}(${record.note})</div>
+                        <div class="record-amount">${record.amount}元</div>
+                    </div>
+                `: `
                     <div class="record-item">
                         <div class="record-name">${record.name}</div>
                         <div class="record-amount">${record.amount}元</div>
