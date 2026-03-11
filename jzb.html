@@ -90,9 +90,14 @@
             white-space: nowrap;
         }
 
+        .search-input-wrap {
+            position: relative;
+            width: 100%;
+        }
+
         .search-input {
             width: 100%;
-            padding: 10px 12px;
+            padding: 10px 32px 10px 12px;
             border: 2px solid #e9ecef;
             border-radius: 10px;
             font-size: 12px;
@@ -103,6 +108,37 @@
         .search-input:focus {
             outline: none;
             border-color: #667eea;
+        }
+
+        .clear-btn {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #c0c4cc;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 12px;
+            line-height: 18px;
+            text-align: center;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            transition: background 0.2s;
+            z-index: 2;
+        }
+
+        .clear-btn:hover {
+            background: #909399;
+        }
+
+        .clear-btn.visible {
+            display: flex;
         }
 
         .sort-buttons {
@@ -173,6 +209,25 @@
             font-size: 16px;
             font-weight: 800;
             color: #06874f;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .view-all-btn {
+            border: 1px solid #e0e3ff;
+            background: #f1f3ff;
+            color: #667eea;
+            border-radius: 999px;
+            padding: 2px 8px;
+            font-size: 12px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .view-all-btn:hover {
+            background: #e6e9ff;
         }
 
         .record-note {
@@ -211,6 +266,109 @@
             display: none;
         }
 
+        /* 弹窗 */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            z-index: 9999;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+        }
+
+        .modal {
+            width: 100%;
+            max-width: 520px;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+            overflow: hidden;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 12px 14px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .modal-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #495057;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .modal-close {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            background: #fff;
+            cursor: pointer;
+            color: #6c757d;
+            font-size: 16px;
+            line-height: 26px;
+        }
+
+        .modal-close:hover {
+            background: #f1f3f5;
+        }
+
+        .modal-body {
+            max-height: min(70vh, 520px);
+            overflow: auto;
+            padding: 12px 14px 14px;
+        }
+
+        .modal-empty {
+            text-align: center;
+            color: #6c757d;
+            padding: 24px 8px;
+        }
+
+        .modal-book {
+            margin-bottom: 10px;
+            border: 1px solid #eef0f2;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .modal-book-name {
+            padding: 8px 10px;
+            background: #f6f7ff;
+            color: #667eea;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .modal-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 8px 10px;
+            border-top: 1px solid #f0f1f3;
+            font-size: 13px;
+            color: #495057;
+        }
+
+        .modal-row-note {
+            color: #6c757d;
+            font-size: 12px;
+        }
+
         /* 滚动条样式 */
         .records-section::-webkit-scrollbar {
             width: 6px;
@@ -246,7 +404,7 @@
                     <option value="6">2020年4月6日 妈妈过世礼金</option>
                     <option value="7">2019年6月15日 谢长容住院</option>
                     <option value="8">2018年7月31日 谢长容住院</option>
-                    <option value="9">2014年7月7日 曾静益大学录取庆贺</option>
+                    <option value="9">2014年7月7日 曾静益大学录取</option>
                     <option value="10">2014年7月7日 搬新居</option>
                     <option value="11">曾永春20岁生日</option>
                 </select>
@@ -261,7 +419,10 @@
             <div class="search-box">
                 <div class="search-item">
                     <label class="search-label">姓名模糊搜索</label>
-                    <input type="text" id="nameSearchInput" class="search-input" placeholder="输入姓名或包含的字...">
+                    <div class="search-input-wrap">
+                        <input type="text" id="nameSearchInput" class="search-input" placeholder="输入姓名或包含的字...">
+                        <button type="button" class="clear-btn" id="nameClearBtn" aria-label="清除姓名输入">✕</button>
+                    </div>
                 </div>
                 <div class="search-item">
                     <div class="search-label-row">
@@ -271,7 +432,10 @@
                             <button type="button" class="sort-btn" data-dir="desc">降序</button>
                         </div>
                     </div>
-                    <input type="text" id="amountSearchInput" class="search-input" placeholder="输入金额...">
+                    <div class="search-input-wrap">
+                        <input type="text" id="amountSearchInput" class="search-input" placeholder="输入金额...">
+                        <button type="button" class="clear-btn" id="amountClearBtn" aria-label="清除金额输入">✕</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -285,6 +449,17 @@
 
         <div class="records-section" id="recordsSection">
             <!-- 记录将在这里动态生成 -->
+        </div>
+    </div>
+
+    <!-- 查看所有记录弹窗 -->
+    <div class="modal-overlay" id="allRecordsModal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal" role="document">
+            <div class="modal-header">
+                <div class="modal-title" id="allRecordsModalTitle">全部记录</div>
+                <button type="button" class="modal-close" id="allRecordsModalClose" aria-label="关闭">✕</button>
+            </div>
+            <div class="modal-body" id="allRecordsModalBody"></div>
         </div>
     </div>
 
@@ -1636,7 +1811,6 @@
                     { "name": "曾维贤", "amount": 200 },
                     { "name": "曾维智", "amount": 200 },
                     { "name": "严荣香", "amount": 800 },
-                    { "name": "谢维", "amount": 0 },
                     { "name": "谢金元", "amount": 400 },
                     { "name": "钟守员", "amount": 600 },
                     { "name": "邓浩", "amount": 400 },
@@ -1663,16 +1837,108 @@
         const bookInfo = document.getElementById('bookInfo');
         const nameSearchInput = document.getElementById('nameSearchInput');
         const amountSearchInput = document.getElementById('amountSearchInput');
+        const nameClearBtn = document.getElementById('nameClearBtn');
+        const amountClearBtn = document.getElementById('amountClearBtn');
         const recordsSection = document.getElementById('recordsSection');
         const totalCountEl = document.getElementById('totalCount');
         const totalAmountEl = document.getElementById('totalAmount');
         const statsTextEl = document.getElementById('statsText');
         const sortButtons = document.querySelectorAll('.sort-btn');
+        const allRecordsModal = document.getElementById('allRecordsModal');
+        const allRecordsModalTitle = document.getElementById('allRecordsModalTitle');
+        const allRecordsModalBody = document.getElementById('allRecordsModalBody');
+        const allRecordsModalClose = document.getElementById('allRecordsModalClose');
 
         // 初始化
         function init() {
             loadBook(currentBookIndex);
             setupEventListeners();
+            syncClearButtons();
+        }
+
+        function escapeHtml(str) {
+            return String(str).replace(/[&<>"']/g, (m) => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            }[m]));
+        }
+
+        function getAllRecordsByName(name) {
+            const res = [];
+            accountBooks.forEach((book, bookIndex) => {
+                (book.records || []).forEach((r, recordIndex) => {
+                    if (r && r.name === name) {
+                        res.push({
+                            bookIndex,
+                            bookName: book.name,
+                            recordIndex,
+                            amount: r.amount,
+                            note: r.note || ''
+                        });
+                    }
+                });
+            });
+            return res;
+        }
+
+        function openAllRecordsModal(name) {
+            const list = getAllRecordsByName(name);
+            allRecordsModalTitle.textContent = `“${name}” 在所有人情的记录（共 ${list.length} 条）`;
+
+            if (list.length === 0) {
+                allRecordsModalBody.innerHTML = '<div class="modal-empty">暂无记录</div>';
+            } else {
+                // 按账本分组，且同名多条全部展示
+                const groups = new Map();
+                list.forEach(item => {
+                    if (!groups.has(item.bookName)) groups.set(item.bookName, []);
+                    groups.get(item.bookName).push(item);
+                });
+
+                const html = Array.from(groups.entries()).map(([bookName, items]) => {
+                    const rows = items.map(it => {
+                        const amountStr = (typeof it.amount === 'number') ? `${it.amount}元` : `${it.amount}元`;
+                        const noteHtml = it.note ? `<div class="modal-row-note">备注：${escapeHtml(it.note)}</div>` : '';
+                        return `
+                            <div class="modal-row">
+                                <div>
+                                    <div>金额：${escapeHtml(amountStr)}</div>
+                                    ${noteHtml}
+                                </div>
+                                <div>#${it.recordIndex + 1}</div>
+                            </div>
+                        `;
+                    }).join('');
+                    return `
+                        <div class="modal-book">
+                            <div class="modal-book-name">${escapeHtml(bookName)}</div>
+                            ${rows}
+                        </div>
+                    `;
+                }).join('');
+
+                allRecordsModalBody.innerHTML = html;
+            }
+
+            allRecordsModal.classList.add('open');
+            allRecordsModal.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeAllRecordsModal() {
+            allRecordsModal.classList.remove('open');
+            allRecordsModal.setAttribute('aria-hidden', 'true');
+        }
+
+        function syncClearButtons() {
+            if (nameClearBtn) {
+                nameClearBtn.classList.toggle('visible', (nameSearchInput?.value || '').length > 0);
+            }
+            if (amountClearBtn) {
+                amountClearBtn.classList.toggle('visible', (amountSearchInput?.value || '').length > 0);
+            }
         }
 
         // 设置事件监听
@@ -1681,19 +1947,58 @@
             bookSelect.addEventListener('change', (e) => {
                 currentBookIndex = parseInt(e.target.value);
                 loadBook(currentBookIndex);
-                nameSearchInput.value = '';
-                amountSearchInput.value = '';
+                // nameSearchInput.value = '';
+                // amountSearchInput.value = '';
                 filterRecords();
+                syncClearButtons();
             });
 
             // 姓名搜索输入
             nameSearchInput.addEventListener('input', () => {
+                nameClearBtn.classList.toggle('visible', nameSearchInput.value.length > 0);
+                filterRecords();
+            });
+
+            // 姓名清除按钮
+            nameClearBtn.addEventListener('click', () => {
+                nameSearchInput.value = '';
+                nameClearBtn.classList.remove('visible');
+                nameSearchInput.focus();
                 filterRecords();
             });
 
             // 金额搜索输入
             amountSearchInput.addEventListener('input', () => {
+                amountClearBtn.classList.toggle('visible', amountSearchInput.value.length > 0);
                 filterRecords();
+            });
+
+            // 金额清除按钮
+            amountClearBtn.addEventListener('click', () => {
+                amountSearchInput.value = '';
+                amountClearBtn.classList.remove('visible');
+                amountSearchInput.focus();
+                filterRecords();
+            });
+
+            // 查看所有（事件委托）
+            recordsSection.addEventListener('click', (e) => {
+                const btn = e.target.closest('.view-all-btn');
+                if (!btn) return;
+                const name = btn.dataset.name || '';
+                if (!name) return;
+                openAllRecordsModal(name);
+            });
+
+            // 弹窗关闭：按钮 / 点击遮罩 / Esc
+            allRecordsModalClose.addEventListener('click', closeAllRecordsModal);
+            allRecordsModal.addEventListener('click', (e) => {
+                if (e.target === allRecordsModal) closeAllRecordsModal();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && allRecordsModal.classList.contains('open')) {
+                    closeAllRecordsModal();
+                }
             });
 
             // 金额排序按钮
@@ -1772,13 +2077,19 @@
             recordsSection.innerHTML = filteredRecords
                 .map(record => record.note && record.note.length > 0 ? `
                     <div class="record-item">
-                        <div class="record-name">${record.name}</div>
+                        <div class="record-name">
+                            <span>${record.name}</span>
+                            <button type="button" class="view-all-btn" data-name="${escapeHtml(record.name)}">查看所有</button>
+                        </div>
                          <div class="record-note"><span class="record-note-type"> 送</span> ${record?.note}</div>
                         <div class="record-amount">${record.amount}元</div>
                     </div>
                 `: `
                     <div class="record-item">
-                        <div class="record-name">${record.name}</div>
+                        <div class="record-name">
+                            <span>${record.name}</span>
+                            <button type="button" class="view-all-btn" data-name="${escapeHtml(record.name)}">查看所有</button>
+                        </div>
                         <div class="record-amount">${record.amount}元</div>
                     </div>
                 `)
