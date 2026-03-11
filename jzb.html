@@ -2015,6 +2015,10 @@
                         btn.classList.add('active');
                     }
                     filterRecords();
+                    // 排序后滚动到顶部，方便查看头部数据
+                    if (recordsSection) {
+                        recordsSection.scrollTop = 0;
+                    }
                 });
             });
         }
