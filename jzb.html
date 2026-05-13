@@ -38,8 +38,15 @@
             text-align: center;
         }
 
+        .header-tools {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
         .book-selector {
             margin: 0;
+            flex: 1;
         }
 
         .book-selector select {
@@ -56,6 +63,21 @@
         .book-selector select option {
             background: #667eea;
             color: white;
+        }
+
+        .header-action-btn {
+            border: none;
+            border-radius: 10px;
+            padding: 8px 10px;
+            font-size: 12px;
+            cursor: pointer;
+            white-space: nowrap;
+            background: rgba(255, 255, 255, 0.18);
+            color: #fff;
+        }
+
+        .header-action-btn:hover {
+            background: rgba(255, 255, 255, 0.28);
         }
 
         .search-section {
@@ -176,6 +198,28 @@
             line-height: 1.5;
         }
 
+        .book-type-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 6px;
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-size: 12px;
+            line-height: 1;
+            vertical-align: middle;
+        }
+
+        .book-type-badge.income {
+            background: #ecfdf3;
+            color: #1f7a45;
+        }
+
+        .book-type-badge.expense {
+            background: #fff1f0;
+            color: #cf1322;
+        }
+
         .stat-highlight {
             color: #667eea;
             font-weight: bold;
@@ -188,16 +232,37 @@
             overflow-y: auto;
         }
 
+        .record-toolbar {
+            padding: 8px 16px 0;
+            background: #fff;
+        }
+
+        .primary-action-btn {
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 12px;
+            font-size: 14px;
+            cursor: pointer;
+            background: #667eea;
+            color: #fff;
+        }
+
+        .primary-action-btn:hover {
+            background: #5568d3;
+        }
+
         .record-item {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             padding: 5px;
             margin-bottom: 8px;
             background: #f8f9fa;
             border-radius: 8px;
             border-left: 3px solid #667eea;
             transition: transform 0.2s, box-shadow 0.2s;
+            gap: 10px;
         }
 
         .record-item:hover {
@@ -234,25 +299,108 @@
             font-size: 14px;
             color: #399806;
             margin-bottom: 5px;
-            display: block;
-            white-space: nowrap;
             display: flex;
             align-items: center;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
 
-            .record-note-type {
-                font-size: 12px;
-                color: #6c757d;
-
-                display: block;
-                white-space: nowrap;
-                padding-right: 2px;
-            }
+        .record-note-type {
+            font-size: 12px;
+            color: #6c757d;
+            white-space: nowrap;
         }
 
         .record-amount {
             font-size: 18px;
             font-weight: bold;
             color: #667eea;
+        }
+
+        .record-main {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .record-side {
+            min-width: 110px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+        }
+
+        .record-actions {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .record-action-btn {
+            border: 1px solid #d9ddff;
+            background: #fff;
+            color: #667eea;
+            border-radius: 999px;
+            padding: 3px 10px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .record-action-btn:hover {
+            background: #f5f7ff;
+        }
+
+        .record-action-btn.danger {
+            border-color: #ffd1cf;
+            color: #cf1322;
+        }
+
+        .record-action-btn.success {
+            border-color: #b7ebc6;
+            color: #1f7a45;
+        }
+
+        .record-edit-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 8px;
+        }
+
+        .record-edit-field {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .record-edit-label {
+            font-size: 12px;
+            color: #6c757d;
+        }
+
+        .record-edit-input {
+            width: 100%;
+            border: 1px solid #d9dfe7;
+            border-radius: 8px;
+            padding: 8px 10px;
+            font-size: 13px;
+        }
+
+        .record-edit-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .expense-record {
+            border-left-color: #ff7875;
+        }
+
+        .expense-record .record-name {
+            color: #a8071a;
+        }
+
+        .expense-record .record-amount {
+            color: #e55353;
         }
 
         .no-results {
@@ -333,6 +481,148 @@
             padding: 12px 14px 14px;
         }
 
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 13px;
+            color: #495057;
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            border: 1px solid #d9dfe7;
+            border-radius: 10px;
+            padding: 10px 12px;
+            font-size: 14px;
+        }
+
+        .form-input:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            padding-top: 8px;
+        }
+
+        .modal-btn {
+            border: none;
+            border-radius: 10px;
+            padding: 9px 14px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .modal-btn.primary {
+            background: #667eea;
+            color: #fff;
+        }
+
+        .modal-btn.secondary {
+            background: #f1f3f5;
+            color: #495057;
+        }
+
+        .modal-btn.danger {
+            background: #fff1f0;
+            color: #cf1322;
+        }
+
+        .modal-btn.hidden {
+            display: none;
+        }
+
+        .batch-row-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .batch-row {
+            display: grid;
+            grid-template-columns: 1.2fr 1.4fr 0.9fr 42px;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .batch-input {
+            width: 100%;
+            border: 1px solid #d9dfe7;
+            border-radius: 10px;
+            padding: 10px 12px;
+            font-size: 13px;
+        }
+
+        .batch-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .icon-btn {
+            width: 36px;
+            height: 36px;
+            border: 1px solid #ffd1cf;
+            border-radius: 10px;
+            background: #fff5f5;
+            color: #cf1322;
+            cursor: pointer;
+        }
+
+        .add-row-btn {
+            width: 100%;
+            border: 1px dashed #667eea;
+            border-radius: 10px;
+            padding: 10px 12px;
+            background: #f7f8ff;
+            color: #667eea;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .toast-container {
+            position: fixed;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10001;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            pointer-events: none;
+        }
+
+        .toast {
+            min-width: 180px;
+            max-width: 80vw;
+            padding: 10px 14px;
+            border-radius: 12px;
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+            font-size: 13px;
+        }
+
+        .toast.success {
+            background: rgba(31, 122, 69, 0.95);
+        }
+
+        .toast.error {
+            background: rgba(207, 19, 34, 0.95);
+        }
+
+        .toast.info {
+            background: rgba(72, 91, 236, 0.95);
+        }
+
         .modal-empty {
             text-align: center;
             color: #6c757d;
@@ -352,6 +642,10 @@
             color: #667eea;
             font-weight: 700;
             font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
         }
 
         .modal-row {
@@ -367,6 +661,28 @@
         .modal-row-note {
             color: #6c757d;
             font-size: 12px;
+        }
+
+        .modal-direction {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 24px;
+            padding: 1px 6px;
+            margin-right: 6px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .modal-direction.income {
+            background: #ecfdf3;
+            color: #1f7a45;
+        }
+
+        .modal-direction.expense {
+            background: #fff1f0;
+            color: #cf1322;
         }
 
         /* 滚动条样式 */
@@ -393,21 +709,12 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="book-selector">
-                <select id="bookSelect">
-                    <option value="0">2025年4月6日 曾希沅百日宴</option>
-                    <option value="1">2023年5月3日 曾静益结婚</option>
-                    <option value="2">2023/12/10日 吴慕臻百日宴</option>
-                    <option value="3">2022年1月15日 曾维健满50</option>
-                    <option value="4">2021年6月19日 春春结婚</option>
-                    <option value="5">2020年4月12日 骨折住院收礼</option>
-                    <option value="6">2020年4月6日 妈妈过世礼金</option>
-                    <option value="7">2019年6月15日 谢长容住院</option>
-                    <option value="8">2018年7月31日 谢长容住院</option>
-                    <option value="9">2014年7月7日 曾静益大学录取</option>
-                    <option value="10">2014年7月7日 搬新居</option>
-                    <option value="11">曾永春20岁生日</option>
-                </select>
+            <div class="header-tools">
+                <div class="book-selector">
+                    <select id="bookSelect"></select>
+                </div>
+                <button type="button" class="header-action-btn" id="addBookBtn">新增大类</button>
+                <button type="button" class="header-action-btn" id="editBookBtn">编辑当前</button>
             </div>
         </div>
 
@@ -418,10 +725,10 @@
         <div class="search-section">
             <div class="search-box">
                 <div class="search-item">
-                    <label class="search-label">输入姓名模糊搜索</label>
+                    <label class="search-label">输入姓名/备注模糊搜索</label>
                     <div class="search-input-wrap">
-                        <input type="text" id="nameSearchInput" class="search-input" placeholder="姓名包含的字...">
-                        <button type="button" class="clear-btn" id="nameClearBtn" aria-label="清除姓名输入">✕</button>
+                        <input type="text" id="nameSearchInput" class="search-input" placeholder="姓名或备注包含的字...">
+                        <button type="button" class="clear-btn" id="nameClearBtn" aria-label="清除姓名或备注输入">✕</button>
                     </div>
                 </div>
                 <div class="search-item">
@@ -447,6 +754,10 @@
             </div>
         </div>
 
+        <div class="record-toolbar">
+            <button type="button" class="primary-action-btn" id="addRecordBtn">新增礼金详情</button>
+        </div>
+
         <div class="records-section" id="recordsSection">
             <!-- 记录将在这里动态生成 -->
         </div>
@@ -463,9 +774,55 @@
         </div>
     </div>
 
+    <div class="modal-overlay" id="bookModal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal" role="document">
+            <div class="modal-header">
+                <div class="modal-title" id="bookModalTitle">新增礼金大类</div>
+                <button type="button" class="modal-close" id="bookModalClose" aria-label="关闭">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label" for="bookNameInput">大类名称</label>
+                    <input type="text" id="bookNameInput" class="form-input" placeholder="请输入大类名称">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="bookTypeSelect">类型</label>
+                    <select id="bookTypeSelect" class="form-select">
+                        <option value="income">收礼</option>
+                        <option value="expense">送礼</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="modal-btn danger hidden" id="deleteBookBtn">删除当前</button>
+                    <button type="button" class="modal-btn secondary" id="bookModalCancel">取消</button>
+                    <button type="button" class="modal-btn primary" id="bookModalConfirm">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="recordBatchModal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal" role="document">
+            <div class="modal-header">
+                <div class="modal-title" id="recordBatchModalTitle">批量新增礼金详情</div>
+                <button type="button" class="modal-close" id="recordBatchModalClose" aria-label="关闭">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="batch-row-list" id="recordBatchRows"></div>
+                <button type="button" class="add-row-btn" id="recordBatchAddRowBtn">+ 再新增一行</button>
+                <div class="modal-footer">
+                    <button type="button" class="modal-btn secondary" id="recordBatchCancel">取消</button>
+                    <button type="button" class="modal-btn primary" id="recordBatchConfirm">确定新增</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toastContainer"></div>
+
     <script>
         // 账本数据
-        const accountBooks = [
+        const defaultAccountBooks = [
             {
                 name: "2025年4月6日 曾希沅百日宴",
                 records: [
@@ -1821,38 +2178,103 @@
                    
                 ]
             },
-            {name:'曾永春20岁生日',
+            {
+                name: '曾永春20岁生日',
                 records: [
-                { "name": "钟守员", "amount": 400, },
+                    { "name": "钟守员", "amount": 400 }
+                ]
+            },
+            {
+                // 按“总账”方式管理送礼记录，避免每个事项都单独占一个账本
+                name: "送礼总账",
+                type: "expense",
+                records: [
+                   
                 ]
             }
         ];
 
+        // 方案一：用固定 key 存整份账本内容，默认硬编码只作为首次加载的兜底值
+        const LEDGER_STORAGE_KEY = 'cerererilahbdfieicjd';
+        const SAVE_CACHE_URL = 'https://api-saas-test.wemew.cn/chagoi-store-boss/v1/boss/uncheck/cache/save';
+        const QUERY_CACHE_URL = 'https://api-saas-test.wemew.cn/chagoi-store-boss/v1/boss/uncheck/cache/query';
+        const STORAGE_AMOUNT_SCALE = 100;
+
+        let accountBooks = [];
         let currentBookIndex = 0;
         let filteredRecords = [];
         let currentSortDirection = 'none';
+        let editingRecordId = '';
+        let currentBookModalMode = 'create';
 
         // DOM 元素
         const bookSelect = document.getElementById('bookSelect');
+        const addBookBtn = document.getElementById('addBookBtn');
+        const editBookBtn = document.getElementById('editBookBtn');
+        const addRecordBtn = document.getElementById('addRecordBtn');
         const bookInfo = document.getElementById('bookInfo');
         const nameSearchInput = document.getElementById('nameSearchInput');
         const amountSearchInput = document.getElementById('amountSearchInput');
         const nameClearBtn = document.getElementById('nameClearBtn');
         const amountClearBtn = document.getElementById('amountClearBtn');
         const recordsSection = document.getElementById('recordsSection');
-        const totalCountEl = document.getElementById('totalCount');
-        const totalAmountEl = document.getElementById('totalAmount');
         const statsTextEl = document.getElementById('statsText');
         const sortButtons = document.querySelectorAll('.sort-btn');
         const allRecordsModal = document.getElementById('allRecordsModal');
         const allRecordsModalTitle = document.getElementById('allRecordsModalTitle');
         const allRecordsModalBody = document.getElementById('allRecordsModalBody');
         const allRecordsModalClose = document.getElementById('allRecordsModalClose');
+        const bookModal = document.getElementById('bookModal');
+        const bookModalTitle = document.getElementById('bookModalTitle');
+        const bookModalClose = document.getElementById('bookModalClose');
+        const bookModalCancel = document.getElementById('bookModalCancel');
+        const bookModalConfirm = document.getElementById('bookModalConfirm');
+        const deleteBookBtn = document.getElementById('deleteBookBtn');
+        const bookNameInput = document.getElementById('bookNameInput');
+        const bookTypeSelect = document.getElementById('bookTypeSelect');
+        const recordBatchModal = document.getElementById('recordBatchModal');
+        const recordBatchModalTitle = document.getElementById('recordBatchModalTitle');
+        const recordBatchModalClose = document.getElementById('recordBatchModalClose');
+        const recordBatchCancel = document.getElementById('recordBatchCancel');
+        const recordBatchConfirm = document.getElementById('recordBatchConfirm');
+        const recordBatchAddRowBtn = document.getElementById('recordBatchAddRowBtn');
+        const recordBatchRows = document.getElementById('recordBatchRows');
+        const toastContainer = document.getElementById('toastContainer');
 
-        // 初始化
-        function init() {
-            loadBook(currentBookIndex);
+        // 初始化：先用默认值秒开页面，再异步尝试加载接口里的数据
+        async function init() {
             setupEventListeners();
+            // 初始化时先强制回退一次本地默认值，确保页面一定有可展示的数据
+            applyLocalDefaultBooks();
+            await hydrateBooksFromRemote();
+        }
+
+        function cloneData(data) {
+            return JSON.parse(JSON.stringify(data));
+        }
+
+        function safeJsonParse(text) {
+            if (!text || typeof text !== 'string') return text;
+            try {
+                return JSON.parse(text);
+            } catch (error) {
+                return text;
+            }
+        }
+
+        // 当云端无值或接口异常时，统一走这里回退到硬编码默认数据
+        function applyLocalDefaultBooks(preferredBookId = '') {
+            accountBooks = normalizeBooks(cloneData(defaultAccountBooks));
+            const matchedIndex = preferredBookId
+                ? accountBooks.findIndex(book => book.id === preferredBookId)
+                : -1;
+            currentBookIndex = matchedIndex >= 0
+                ? matchedIndex
+                : 0;
+            resetEditingState();
+            renderBookOptions();
+            loadBook(currentBookIndex);
+            filterRecords();
             syncClearButtons();
         }
 
@@ -1866,17 +2288,132 @@
             }[m]));
         }
 
+        // 所有默认数据和接口数据统一在这里补齐 id，后面增删改查都基于稳定 id 进行
+        // id 缩短到 8 位，进一步减少入库存储体积；旧数据里的长 id 仍然兼容
+        function randomId(length = 8) {
+            const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789';
+            const cryptoApi = window.crypto || window.msCrypto;
+            if (cryptoApi && cryptoApi.getRandomValues) {
+                const values = new Uint32Array(length);
+                cryptoApi.getRandomValues(values);
+                return Array.from(values, value => chars[value % chars.length]).join('').slice(0, length);
+            }
+            let result = '';
+            while (result.length < length) {
+                result += Math.random().toString(36).slice(2);
+            }
+            return result.slice(0, length);
+        }
+
+        function getBookType(book) {
+            return book && book.type === 'expense' ? 'expense' : 'income';
+        }
+
+        function getBookTypeText(book) {
+            return getBookType(book) === 'expense' ? '送礼' : '收礼';
+        }
+
+        function getBookTypeBadgeHtml(book) {
+            const type = getBookType(book);
+            const typeText = type === 'expense' ? '送' : '收';
+            return `<span class="book-type-badge ${type}">${typeText}</span>`;
+        }
+
+        function normalizeRecord(record) {
+            return {
+                id: record?.id || randomId(),
+                name: String(record?.name || '').trim(),
+                amount: Number(record?.amount) || 0,
+                note: String(record?.note || '').trim()
+            };
+        }
+
+        function normalizeBook(book) {
+            return {
+                id: book?.id || randomId(),
+                name: String(book?.name || '').trim(),
+                type: getBookType(book),
+                records: Array.isArray(book?.records) ? book.records.map(normalizeRecord) : []
+            };
+        }
+
+        function normalizeBooks(books) {
+            return Array.isArray(books) ? books.map(normalizeBook) : [];
+        }
+
+        function clampIndex(index, total) {
+            if (!total) return 0;
+            if (index < 0) return 0;
+            if (index >= total) return total - 1;
+            return index;
+        }
+
+        function getCurrentBook() {
+            return accountBooks[currentBookIndex] || null;
+        }
+
+        function resetEditingState() {
+            editingRecordId = '';
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.textContent = message;
+            toastContainer.appendChild(toast);
+            window.setTimeout(() => {
+                toast.remove();
+            }, 2600);
+        }
+
+        function openModal(modalEl) {
+            modalEl.classList.add('open');
+            modalEl.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeModal(modalEl) {
+            modalEl.classList.remove('open');
+            modalEl.setAttribute('aria-hidden', 'true');
+        }
+
+        function updateAddRecordButton() {
+            const currentBook = getCurrentBook();
+            if (!currentBook) {
+                addRecordBtn.textContent = '新增礼金详情';
+                return;
+            }
+            addRecordBtn.textContent = getBookType(currentBook) === 'expense' ? '新增送礼详情' : '新增收礼详情';
+        }
+
+        function getStatsText(book, totalCount, totalAmount) {
+            if (getBookType(book) === 'expense') {
+                return `总计 <span class="stat-highlight">${totalCount}</span> 笔送礼记录，送出 <span class="stat-highlight">${totalAmount.toFixed(2)}</span> 元`;
+            }
+            return `总计 <span class="stat-highlight">${totalCount}</span> 位亲友参加，收到 <span class="stat-highlight">${totalAmount.toFixed(2)}</span> 元`;
+        }
+
+        function renderBookOptions() {
+            bookSelect.innerHTML = accountBooks.map((book, index) => {
+                const suffix = getBookType(book) === 'expense' ? '（送）' : '';
+                return `<option value="${index}">${escapeHtml(book.name)}${suffix}</option>`;
+            }).join('');
+            if (accountBooks.length > 0) {
+                bookSelect.value = String(currentBookIndex);
+            }
+        }
+
         function getAllRecordsByName(name) {
             const res = [];
             accountBooks.forEach((book, bookIndex) => {
-                (book.records || []).forEach((r, recordIndex) => {
-                    if (r && r.name === name) {
+                (book.records || []).forEach((record, recordIndex) => {
+                    if (record && record.name === name) {
                         res.push({
                             bookIndex,
                             bookName: book.name,
                             recordIndex,
-                            amount: r.amount,
-                            note: r.note || ''
+                            type: getBookType(book),
+                            amount: record.amount,
+                            note: record.note || ''
                         });
                     }
                 });
@@ -1886,12 +2423,11 @@
 
         function openAllRecordsModal(name) {
             const list = getAllRecordsByName(name);
-            allRecordsModalTitle.textContent = `“${name}” 在所有人情的记录（共 ${list.length} 条）`;
+            allRecordsModalTitle.textContent = `“${name}” 在全部账本中的往来记录（共 ${list.length} 条）`;
 
             if (list.length === 0) {
                 allRecordsModalBody.innerHTML = '<div class="modal-empty">暂无记录</div>';
             } else {
-                // 按账本分组，且同名多条全部展示
                 const groups = new Map();
                 list.forEach(item => {
                     if (!groups.has(item.bookName)) groups.set(item.bookName, []);
@@ -1899,22 +2435,23 @@
                 });
 
                 const html = Array.from(groups.entries()).map(([bookName, items]) => {
-                    const rows = items.map(it => {
-                        const amountStr = (typeof it.amount === 'number') ? `${it.amount}元` : `${it.amount}元`;
-                        const noteHtml = it.note ? `<div class="modal-row-note">备注：${escapeHtml(it.note)}</div>` : '';
+                    const type = items[0]?.type === 'expense' ? 'expense' : 'income';
+                    const typeText = type === 'expense' ? '送' : '收';
+                    const rows = items.map(item => {
+                        const noteHtml = item.note ? `<div class="modal-row-note">备注：${escapeHtml(item.note)}</div>` : '';
                         return `
                             <div class="modal-row">
                                 <div>
-                                    <div>金额：${escapeHtml(amountStr)}</div>
+                                    <div><span class="modal-direction ${item.type}">${item.type === 'expense' ? '送' : '收'}</span>金额：${escapeHtml(`${item.amount}元`)}</div>
                                     ${noteHtml}
                                 </div>
-                                <div>#${it.recordIndex + 1}</div>
+                                <div>#${item.recordIndex + 1}</div>
                             </div>
                         `;
                     }).join('');
                     return `
                         <div class="modal-book">
-                            <div class="modal-book-name">${escapeHtml(bookName)}</div>
+                            <div class="modal-book-name">${escapeHtml(bookName)}<span class="book-type-badge ${type}">${typeText}</span></div>
                             ${rows}
                         </div>
                     `;
@@ -1923,13 +2460,70 @@
                 allRecordsModalBody.innerHTML = html;
             }
 
-            allRecordsModal.classList.add('open');
-            allRecordsModal.setAttribute('aria-hidden', 'false');
+            openModal(allRecordsModal);
         }
 
         function closeAllRecordsModal() {
-            allRecordsModal.classList.remove('open');
-            allRecordsModal.setAttribute('aria-hidden', 'true');
+            closeModal(allRecordsModal);
+        }
+
+        function openBookModal(mode) {
+            currentBookModalMode = mode;
+            const currentBook = getCurrentBook();
+            if (mode === 'edit' && currentBook) {
+                bookModalTitle.textContent = '编辑当前大类';
+                bookModalConfirm.textContent = '确定修改';
+                deleteBookBtn.classList.remove('hidden');
+                bookNameInput.value = currentBook.name;
+                bookTypeSelect.value = getBookType(currentBook);
+            } else {
+                bookModalTitle.textContent = '新增礼金大类';
+                bookModalConfirm.textContent = '确定新增';
+                deleteBookBtn.classList.add('hidden');
+                bookNameInput.value = '';
+                bookTypeSelect.value = 'income';
+            }
+            openModal(bookModal);
+            bookNameInput.focus();
+        }
+
+        function closeBookModal() {
+            deleteBookBtn.classList.add('hidden');
+            closeModal(bookModal);
+        }
+
+        function renderBatchRow(rowData = {}) {
+            const rowId = rowData.rowId || randomId();
+            return `
+                <div class="batch-row" data-row-id="${rowId}">
+                    <input type="text" class="batch-input" data-field="name" placeholder="名称（必填）" value="${escapeHtml(rowData.name || '')}">
+                    <input type="text" class="batch-input" data-field="note" placeholder="备注" value="${escapeHtml(rowData.note || '')}">
+                    <input type="number" class="batch-input" data-field="amount" placeholder="金额" value="${rowData.amount ?? ''}">
+                    <button type="button" class="icon-btn" data-action="remove-batch-row" data-row-id="${rowId}" aria-label="删除当前行">✕</button>
+                </div>
+            `;
+        }
+
+        function ensureBatchRows() {
+            if (!recordBatchRows.children.length) {
+                recordBatchRows.innerHTML = renderBatchRow();
+            }
+        }
+
+        function openRecordBatchModal() {
+            const currentBook = getCurrentBook();
+            if (!currentBook) {
+                showToast('请先新增一个礼金大类', 'error');
+                return;
+            }
+            recordBatchRows.innerHTML = renderBatchRow();
+            recordBatchModalTitle.textContent = getBookType(currentBook) === 'expense' ? '批量新增送礼详情' : '批量新增收礼详情';
+            openModal(recordBatchModal);
+        }
+
+        function closeRecordBatchModal() {
+            closeModal(recordBatchModal);
+            recordBatchRows.innerHTML = '';
         }
 
         function syncClearButtons() {
@@ -1941,25 +2535,514 @@
             }
         }
 
-        // 设置事件监听
-        function setupEventListeners() {
-            // 账本切换
-            bookSelect.addEventListener('change', (e) => {
-                currentBookIndex = parseInt(e.target.value);
+        async function requestJson(url, options = {}) {
+            const method = options.method || 'GET';
+            const params = options.params || null;
+            const data = options.data;
+            let finalUrl = url;
+
+            if (params) {
+                const searchParams = new URLSearchParams();
+                Object.keys(params).forEach((key) => {
+                    const value = params[key];
+                    if (value !== undefined && value !== null && value !== '') {
+                        searchParams.append(key, value);
+                    }
+                });
+                const queryString = searchParams.toString();
+                if (queryString) {
+                    finalUrl += `${finalUrl.includes('?') ? '&' : '?'}${queryString}`;
+                }
+            }
+
+            const fetchOptions = {
+                method,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            };
+
+            if (method !== 'GET' && data !== undefined) {
+                fetchOptions.headers['Content-Type'] = 'application/json;charset=UTF-8';
+                fetchOptions.body = JSON.stringify(data);
+            }
+
+            const response = await fetch(finalUrl, fetchOptions);
+            const responseText = await response.text();
+            const json = safeJsonParse(responseText);
+
+            if (!response.ok) {
+                const message = json?.message || json?.msg || responseText || `请求失败（${response.status}）`;
+                throw new Error(message);
+            }
+
+            // 除了 HTTP 状态，还要拦截业务返回码
+            if (json && typeof json === 'object' && 'code' in json && Number(json.code) !== 200) {
+                const message = json?.message || json?.msg || `接口返回异常，code=${json.code}`;
+                throw new Error(message);
+            }
+
+            return json;
+        }
+
+        // 金额压缩：存储时按 100 元为 1 单位，读取时再乘回来
+        function encodeAmount(amount) {
+            return Number(((Number(amount) || 0) / STORAGE_AMOUNT_SCALE).toFixed(2));
+        }
+
+        function decodeAmount(amount, scale = STORAGE_AMOUNT_SCALE) {
+            return Number(((Number(amount) || 0) * scale).toFixed(2));
+        }
+
+        // 第二层压缩：把大量重复出现的姓名/备注抽成字典表，只在记录里存下标
+        function collectStringStats(books) {
+            const nameCounter = new Map();
+            const noteCounter = new Map();
+
+            books.forEach(book => {
+                (book.records || []).forEach(record => {
+                    const name = String(record.name || '').trim();
+                    const note = String(record.note || '').trim();
+
+                    if (name) {
+                        nameCounter.set(name, (nameCounter.get(name) || 0) + 1);
+                    }
+                    if (note) {
+                        noteCounter.set(note, (noteCounter.get(note) || 0) + 1);
+                    }
+                });
+            });
+
+            return { nameCounter, noteCounter };
+        }
+
+        function buildDictionary(counter) {
+            const list = [];
+            const indexMap = new Map();
+
+            counter.forEach((count, text) => {
+                // 只压缩重复出现的字符串，避免唯一值反而越压越大
+                if (!text || count < 2) return;
+                indexMap.set(text, list.length);
+                list.push(text);
+            });
+
+            return { list, indexMap };
+        }
+
+        function encodeByDictionary(text, dictionaryMap) {
+            const value = String(text || '').trim();
+            if (!value) return '';
+            if (dictionaryMap.has(value)) {
+                return dictionaryMap.get(value);
+            }
+            return value;
+        }
+
+        // 记录压缩：结构为 [id, nameOrNameIndex, amountDiv100, noteOrNoteIndex?]
+        function encodeRecord(record, dictionaries) {
+            const row = [
+                record.id || randomId(),
+                encodeByDictionary(record.name, dictionaries.nameMap),
+                encodeAmount(record.amount)
+            ];
+            const note = String(record.note || '').trim();
+            if (note) {
+                row.push(encodeByDictionary(note, dictionaries.noteMap));
+            }
+            return row;
+        }
+
+        function decodeRecord(rawRecord, dictionaries = {}, scale = STORAGE_AMOUNT_SCALE) {
+            if (Array.isArray(rawRecord)) {
+                const rawName = rawRecord[1];
+                const rawNote = rawRecord[3];
+
+                return normalizeRecord({
+                    id: rawRecord[0] || randomId(),
+                    name: typeof rawName === 'number' ? (dictionaries.nameList?.[rawName] || '') : (rawName || ''),
+                    amount: decodeAmount(rawRecord[2], scale),
+                    note: typeof rawNote === 'number' ? (dictionaries.noteList?.[rawNote] || '') : (rawNote || '')
+                });
+            }
+
+            // 兼容旧格式对象记录
+            return normalizeRecord(rawRecord);
+        }
+
+        // 账本压缩：收礼默认不存 type，只在送礼时写 1
+        // income -> [id, name, records]
+        // expense -> [id, name, 1, records]
+        function encodeBook(book, dictionaries) {
+            const records = (book.records || []).map(record => encodeRecord(record, dictionaries));
+            if (getBookType(book) === 'expense') {
+                return [
+                    book.id || randomId(),
+                    String(book.name || '').trim(),
+                    1,
+                    records
+                ];
+            }
+            return [
+                book.id || randomId(),
+                String(book.name || '').trim(),
+                records
+            ];
+        }
+
+        function decodeBook(rawBook, dictionaries = {}, scale = STORAGE_AMOUNT_SCALE) {
+            if (Array.isArray(rawBook)) {
+                const hasTypeFlag = !Array.isArray(rawBook[2]);
+                const records = hasTypeFlag ? rawBook[3] : rawBook[2];
+                return normalizeBook({
+                    id: rawBook[0] || randomId(),
+                    name: rawBook[1] || '',
+                    type: hasTypeFlag && Number(rawBook[2]) === 1 ? 'expense' : 'income',
+                    records: Array.isArray(records) ? records.map(record => decodeRecord(record, dictionaries, scale)) : []
+                });
+            }
+
+            // 兼容可能存在的上一版短字段对象格式
+            if (rawBook && Array.isArray(rawBook.r)) {
+                return normalizeBook({
+                    id: rawBook.i || randomId(),
+                    name: rawBook.n || '',
+                    type: rawBook.t === 'e' || rawBook.t === 1 ? 'expense' : 'income',
+                    records: rawBook.r.map(record => decodeRecord(record, dictionaries, scale))
+                });
+            }
+
+            // 兼容旧格式对象账本
+            return normalizeBook({
+                ...rawBook,
+                records: Array.isArray(rawBook?.records) ? rawBook.records.map(decodeRecord) : []
+            });
+        }
+
+        function extractStoredContent(response) {
+            const candidates = [
+                response?.data?.content,
+                response?.content,
+                response?.data,
+                response
+            ];
+
+            for (const candidate of candidates) {
+                let parsed = candidate;
+                if (typeof parsed === 'string') {
+                    parsed = safeJsonParse(parsed);
+                }
+                if (!parsed) continue;
+
+                // 新压缩格式：{ v, m, dn, dt, b: [...] }
+                if (parsed && Array.isArray(parsed.b)) {
+                    const dictionaries = {
+                        nameList: Array.isArray(parsed.dn) ? parsed.dn : [],
+                        noteList: Array.isArray(parsed.dt) ? parsed.dt : []
+                    };
+                    const scale = Number(parsed.m) || STORAGE_AMOUNT_SCALE;
+                    return {
+                        books: parsed.b.map(book => decodeBook(book, dictionaries, scale))
+                    };
+                }
+
+                if (Array.isArray(parsed)) {
+                    return { books: parsed.map(decodeBook) };
+                }
+                if (Array.isArray(parsed.books)) {
+                    return {
+                        ...parsed,
+                        books: parsed.books.map(decodeBook)
+                    };
+                }
+            }
+
+            return null;
+        }
+
+        function buildStorageContent(books) {
+            const { nameCounter, noteCounter } = collectStringStats(books);
+            const nameDictionary = buildDictionary(nameCounter);
+            const noteDictionary = buildDictionary(noteCounter);
+
+            return {
+                // v: 版本，m: 金额倍率，u: 更新时间，dn/dt: 字典表，b: 压缩后的 books
+                v: 3,
+                m: STORAGE_AMOUNT_SCALE,
+                u: Date.now(),
+                ...(nameDictionary.list.length ? { dn: nameDictionary.list } : {}),
+                ...(noteDictionary.list.length ? { dt: noteDictionary.list } : {}),
+                b: books.map(book => encodeBook(book, {
+                    nameMap: nameDictionary.indexMap,
+                    noteMap: noteDictionary.indexMap
+                }))
+            };
+        }
+
+        async function hydrateBooksFromRemote() {
+            try {
+                const previousBookId = getCurrentBook()?.id || '';
+                const response = await requestJson(QUERY_CACHE_URL, {
+                    method: 'GET',
+                    params: { key: LEDGER_STORAGE_KEY }
+                });
+                const storedContent = extractStoredContent(response);
+                if (!storedContent || !Array.isArray(storedContent.books) || storedContent.books.length === 0) {
+                    applyLocalDefaultBooks(previousBookId);
+                    showToast('未查询到云端数据，已使用本地默认值', 'info');
+                    return;
+                }
+
+                accountBooks = normalizeBooks(storedContent.books);
+                const matchedIndex = accountBooks.findIndex(book => book.id === previousBookId);
+                currentBookIndex = matchedIndex >= 0 ? matchedIndex : 0;
+                renderBookOptions();
                 loadBook(currentBookIndex);
-                // nameSearchInput.value = '';
-                // amountSearchInput.value = '';
+                filterRecords();
+                showToast('已加载云端账本数据', 'success');
+            } catch (error) {
+                console.error(error);
+                applyLocalDefaultBooks(getCurrentBook()?.id || '');
+                showToast('云端数据加载失败，已继续使用默认值', 'error');
+            }
+        }
+
+        async function saveAllBooks(nextBooks, successMessage, nextIndex = currentBookIndex) {
+            const normalizedBooks = normalizeBooks(nextBooks);
+            const content = buildStorageContent(normalizedBooks);
+            await requestJson(SAVE_CACHE_URL, {
+                method: 'POST',
+                data: {
+                    key: LEDGER_STORAGE_KEY,
+                    content: JSON.stringify(content)
+                }
+            });
+
+            accountBooks = normalizedBooks;
+            currentBookIndex = clampIndex(nextIndex, accountBooks.length);
+            resetEditingState();
+            renderBookOptions();
+            loadBook(currentBookIndex);
+            filterRecords();
+            showToast(successMessage, 'success');
+        }
+
+        async function submitBookModal() {
+            const bookName = bookNameInput.value.trim();
+            const bookType = bookTypeSelect.value === 'expense' ? 'expense' : 'income';
+
+            if (!bookName) {
+                showToast('大类名称不能为空', 'error');
+                bookNameInput.focus();
+                return;
+            }
+
+            const nextBooks = cloneData(accountBooks);
+
+            try {
+                if (currentBookModalMode === 'edit') {
+                    const currentBook = nextBooks[currentBookIndex];
+                    if (!currentBook) {
+                        showToast('当前大类不存在', 'error');
+                        return;
+                    }
+                    currentBook.name = bookName;
+                    currentBook.type = bookType;
+                    await saveAllBooks(nextBooks, '大类修改成功', currentBookIndex);
+                } else {
+                    nextBooks.push({
+                        id: randomId(),
+                        name: bookName,
+                        type: bookType,
+                        records: []
+                    });
+                    await saveAllBooks(nextBooks, '大类新增成功', nextBooks.length - 1);
+                }
+                closeBookModal();
+            } catch (error) {
+                console.error(error);
+                showToast(error.message || '保存大类失败', 'error');
+            }
+        }
+
+        async function deleteCurrentBook() {
+            const currentBook = getCurrentBook();
+            if (!currentBook) {
+                showToast('当前没有可删除的大类', 'error');
+                return;
+            }
+
+            const confirmed = window.confirm(`确定删除大类“${currentBook.name}”吗？删除后其中的礼金明细也会一起删除。`);
+            if (!confirmed) return;
+
+            const nextBooks = cloneData(accountBooks).filter((_, index) => index !== currentBookIndex);
+
+            try {
+                await saveAllBooks(nextBooks, '大类删除成功', currentBookIndex - 1);
+                closeBookModal();
+            } catch (error) {
+                console.error(error);
+                showToast(error.message || '删除大类失败', 'error');
+            }
+        }
+
+        function collectBatchRecords() {
+            const rows = Array.from(recordBatchRows.querySelectorAll('.batch-row'));
+            const records = [];
+
+            for (let index = 0; index < rows.length; index += 1) {
+                const row = rows[index];
+                const name = row.querySelector('[data-field="name"]').value.trim();
+                const note = row.querySelector('[data-field="note"]').value.trim();
+                const amountValue = row.querySelector('[data-field="amount"]').value.trim();
+
+                // 整行都空时直接跳过，方便批量新增时留空备用
+                if (!name && !note && !amountValue) {
+                    continue;
+                }
+
+                if (!name) {
+                    throw new Error(`第 ${index + 1} 行名称不能为空`);
+                }
+
+                const amount = amountValue === '' ? 0 : Number(amountValue);
+                if (Number.isNaN(amount)) {
+                    throw new Error(`第 ${index + 1} 行金额格式不正确`);
+                }
+
+                records.push({
+                    id: randomId(),
+                    name,
+                    note,
+                    amount
+                });
+            }
+
+            return records;
+        }
+
+        async function submitBatchRecords() {
+            const currentBook = getCurrentBook();
+            if (!currentBook) {
+                showToast('当前没有可新增的礼金大类', 'error');
+                return;
+            }
+
+            try {
+                const newRecords = collectBatchRecords();
+                if (newRecords.length === 0) {
+                    showToast('请至少填写一条有效记录', 'error');
+                    return;
+                }
+
+                const nextBooks = cloneData(accountBooks);
+                nextBooks[currentBookIndex].records.push(...newRecords);
+                await saveAllBooks(nextBooks, `${getBookType(currentBook) === 'expense' ? '送礼' : '收礼'}详情新增成功`, currentBookIndex);
+                closeRecordBatchModal();
+            } catch (error) {
+                console.error(error);
+                showToast(error.message || '新增详情失败', 'error');
+            }
+        }
+
+        function startRecordEdit(recordId) {
+            editingRecordId = recordId;
+            displayRecords();
+        }
+
+        function cancelRecordEdit() {
+            editingRecordId = '';
+            displayRecords();
+        }
+
+        async function submitRecordEdit(recordId, recordItemEl) {
+            const name = recordItemEl.querySelector('[data-edit-field="name"]').value.trim();
+            const note = recordItemEl.querySelector('[data-edit-field="note"]').value.trim();
+            const amountValue = recordItemEl.querySelector('[data-edit-field="amount"]').value.trim();
+
+            if (!name) {
+                showToast('名称不能为空', 'error');
+                return;
+            }
+
+            const amount = amountValue === '' ? 0 : Number(amountValue);
+            if (Number.isNaN(amount)) {
+                showToast('金额格式不正确', 'error');
+                return;
+            }
+
+            const nextBooks = cloneData(accountBooks);
+            const currentBook = nextBooks[currentBookIndex];
+            const targetIndex = currentBook.records.findIndex(record => record.id === recordId);
+            if (targetIndex < 0) {
+                showToast('未找到需要修改的记录', 'error');
+                return;
+            }
+
+            currentBook.records[targetIndex] = {
+                ...currentBook.records[targetIndex],
+                name,
+                note,
+                amount
+            };
+
+            try {
+                await saveAllBooks(nextBooks, '礼金记录修改成功', currentBookIndex);
+                editingRecordId = '';
+            } catch (error) {
+                console.error(error);
+                showToast(error.message || '修改失败', 'error');
+            }
+        }
+
+        async function deleteRecord(recordId) {
+            const currentBook = getCurrentBook();
+            if (!currentBook) return;
+
+            const targetRecord = currentBook.records.find(record => record.id === recordId);
+            if (!targetRecord) {
+                showToast('未找到需要删除的记录', 'error');
+                return;
+            }
+
+            const confirmed = window.confirm(`确定删除“${targetRecord.name}”这条记录吗？`);
+            if (!confirmed) return;
+
+            const nextBooks = cloneData(accountBooks);
+            nextBooks[currentBookIndex].records = nextBooks[currentBookIndex].records.filter(record => record.id !== recordId);
+
+            try {
+                await saveAllBooks(nextBooks, '礼金记录删除成功', currentBookIndex);
+            } catch (error) {
+                console.error(error);
+                showToast(error.message || '删除失败', 'error');
+            }
+        }
+
+        function setupEventListeners() {
+            bookSelect.addEventListener('change', (event) => {
+                currentBookIndex = parseInt(event.target.value, 10);
+                resetEditingState();
+                loadBook(currentBookIndex);
                 filterRecords();
                 syncClearButtons();
             });
 
-            // 姓名搜索输入
+            addBookBtn.addEventListener('click', () => openBookModal('create'));
+            editBookBtn.addEventListener('click', () => {
+                if (!getCurrentBook()) {
+                    showToast('当前没有可编辑的大类', 'error');
+                    return;
+                }
+                openBookModal('edit');
+            });
+            addRecordBtn.addEventListener('click', openRecordBatchModal);
+
             nameSearchInput.addEventListener('input', () => {
                 nameClearBtn.classList.toggle('visible', nameSearchInput.value.length > 0);
                 filterRecords();
             });
 
-            // 姓名清除按钮
             nameClearBtn.addEventListener('click', () => {
                 nameSearchInput.value = '';
                 nameClearBtn.classList.remove('visible');
@@ -1967,13 +3050,11 @@
                 filterRecords();
             });
 
-            // 金额搜索输入
             amountSearchInput.addEventListener('input', () => {
                 amountClearBtn.classList.toggle('visible', amountSearchInput.value.length > 0);
                 filterRecords();
             });
 
-            // 金额清除按钮
             amountClearBtn.addEventListener('click', () => {
                 amountSearchInput.value = '';
                 amountClearBtn.classList.remove('visible');
@@ -1981,41 +3062,81 @@
                 filterRecords();
             });
 
-            // 查看所有（事件委托）
-            recordsSection.addEventListener('click', (e) => {
-                const btn = e.target.closest('.view-all-btn');
-                if (!btn) return;
-                const name = btn.dataset.name || '';
-                if (!name) return;
-                openAllRecordsModal(name);
-            });
+            recordsSection.addEventListener('click', async (event) => {
+                const recordActionBtn = event.target.closest('[data-record-action]');
+                if (recordActionBtn) {
+                    const action = recordActionBtn.dataset.recordAction;
+                    const recordId = recordActionBtn.dataset.recordId;
+                    const recordItemEl = recordActionBtn.closest('.record-item');
 
-            // 弹窗关闭：按钮 / 点击遮罩 / Esc
-            allRecordsModalClose.addEventListener('click', closeAllRecordsModal);
-            allRecordsModal.addEventListener('click', (e) => {
-                if (e.target === allRecordsModal) closeAllRecordsModal();
-            });
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && allRecordsModal.classList.contains('open')) {
-                    closeAllRecordsModal();
+                    if (action === 'edit') {
+                        startRecordEdit(recordId);
+                    } else if (action === 'cancel') {
+                        cancelRecordEdit();
+                    } else if (action === 'save') {
+                        await submitRecordEdit(recordId, recordItemEl);
+                    } else if (action === 'delete') {
+                        await deleteRecord(recordId);
+                    }
+                    return;
+                }
+
+                const viewAllBtn = event.target.closest('.view-all-btn');
+                if (viewAllBtn) {
+                    const name = viewAllBtn.dataset.name || '';
+                    if (name) openAllRecordsModal(name);
                 }
             });
 
-            // 金额排序按钮
+            bookModalConfirm.addEventListener('click', submitBookModal);
+            deleteBookBtn.addEventListener('click', deleteCurrentBook);
+            bookModalCancel.addEventListener('click', closeBookModal);
+            bookModalClose.addEventListener('click', closeBookModal);
+            bookModal.addEventListener('click', (event) => {
+                if (event.target === bookModal) closeBookModal();
+            });
+
+            recordBatchConfirm.addEventListener('click', submitBatchRecords);
+            recordBatchCancel.addEventListener('click', closeRecordBatchModal);
+            recordBatchModalClose.addEventListener('click', closeRecordBatchModal);
+            recordBatchModal.addEventListener('click', (event) => {
+                if (event.target === recordBatchModal) closeRecordBatchModal();
+            });
+            recordBatchAddRowBtn.addEventListener('click', () => {
+                recordBatchRows.insertAdjacentHTML('beforeend', renderBatchRow());
+            });
+            recordBatchRows.addEventListener('click', (event) => {
+                const removeBtn = event.target.closest('[data-action="remove-batch-row"]');
+                if (!removeBtn) return;
+                const row = removeBtn.closest('.batch-row');
+                if (row) row.remove();
+                ensureBatchRows();
+            });
+
+            allRecordsModalClose.addEventListener('click', closeAllRecordsModal);
+            allRecordsModal.addEventListener('click', (event) => {
+                if (event.target === allRecordsModal) closeAllRecordsModal();
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key !== 'Escape') return;
+                if (allRecordsModal.classList.contains('open')) closeAllRecordsModal();
+                if (bookModal.classList.contains('open')) closeBookModal();
+                if (recordBatchModal.classList.contains('open')) closeRecordBatchModal();
+            });
+
             sortButtons.forEach(btn => {
                 btn.addEventListener('click', () => {
                     const dir = btn.dataset.dir;
                     if (currentSortDirection === dir) {
-                        // 再次点击同一个按钮，取消排序
                         currentSortDirection = 'none';
-                        sortButtons.forEach(b => b.classList.remove('active'));
+                        sortButtons.forEach(button => button.classList.remove('active'));
                     } else {
                         currentSortDirection = dir;
-                        sortButtons.forEach(b => b.classList.remove('active'));
+                        sortButtons.forEach(button => button.classList.remove('active'));
                         btn.classList.add('active');
                     }
                     filterRecords();
-                    // 排序后滚动到顶部，方便查看头部数据
                     if (recordsSection) {
                         recordsSection.scrollTop = 0;
                     }
@@ -2023,43 +3144,53 @@
             });
         }
 
-        // 加载账本
         function loadBook(index) {
-            const book = accountBooks[index];
-            bookInfo.textContent = book.name;
+            if (!accountBooks.length) {
+                bookInfo.textContent = '';
+                recordsSection.innerHTML = '<div class="no-results">暂无礼金大类，请先新增</div>';
+                statsTextEl.innerHTML = '暂无数据';
+                updateAddRecordButton();
+                return;
+            }
+
+            currentBookIndex = clampIndex(index, accountBooks.length);
+            const book = accountBooks[currentBookIndex];
+            bookInfo.innerHTML = `${escapeHtml(book.name)} ${getBookTypeBadgeHtml(book)}`;
             filteredRecords = [...book.records];
+            bookSelect.value = String(currentBookIndex);
+            updateAddRecordButton();
             displayRecords();
             updateStats();
         }
 
-        // 过滤记录
         function filterRecords() {
-            const book = accountBooks[currentBookIndex];
+            const book = getCurrentBook();
+            if (!book) {
+                filteredRecords = [];
+                displayRecords();
+                updateStats();
+                return;
+            }
+
             const nameQuery = nameSearchInput.value.trim();
             const amountQuery = amountSearchInput.value.trim();
-
             let results = [...book.records];
 
-            // 姓名模糊搜索
             if (nameQuery) {
                 results = results.filter(record =>
-                    record.name.includes(nameQuery)
+                    record.name.includes(nameQuery) || (record.note || '').includes(nameQuery)
                 );
             }
 
-            // 金额精确搜索
             if (amountQuery) {
-                const amount = parseFloat(amountQuery);
-                if (!isNaN(amount)) {
-                    results = results.filter(record =>
-                        record.amount === amount
-                    );
+                const amount = Number(amountQuery);
+                if (!Number.isNaN(amount)) {
+                    results = results.filter(record => record.amount === amount);
                 } else {
                     results = [];
                 }
             }
 
-            // 金额排序
             if (currentSortDirection === 'asc') {
                 results.sort((a, b) => a.amount - b.amount);
             } else if (currentSortDirection === 'desc') {
@@ -2071,47 +3202,94 @@
             updateStats();
         }
 
-        // 显示记录
+        function getRecordDisplayHtml(record, isExpenseBook) {
+            const noteHtml = record.note ? `<div class="record-note"><span class="record-note-type">备注</span>${escapeHtml(record.note)}</div>` : '';
+            return `
+                <div class="record-item ${isExpenseBook ? 'expense-record' : ''}" data-record-id="${record.id}">
+                    <div class="record-main">
+                        <div class="record-name">
+                            <span>${escapeHtml(record.name)}</span>
+                            <button type="button" class="view-all-btn" data-name="${escapeHtml(record.name)}">查看所有</button>
+                        </div>
+                        ${noteHtml}
+                    </div>
+                    <div class="record-side">
+                        <div class="record-amount">${record.amount}元</div>
+                        <div class="record-actions">
+                            <button type="button" class="record-action-btn" data-record-action="edit" data-record-id="${record.id}">编辑</button>
+                            <button type="button" class="record-action-btn danger" data-record-action="delete" data-record-id="${record.id}">删除</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function getRecordEditHtml(record, isExpenseBook) {
+            return `
+                <div class="record-item ${isExpenseBook ? 'expense-record' : ''}" data-record-id="${record.id}">
+                    <div class="record-main">
+                        <div class="record-edit-grid">
+                            <div class="record-edit-field">
+                                <label class="record-edit-label">名称</label>
+                                <input type="text" class="record-edit-input" data-edit-field="name" value="${escapeHtml(record.name)}" placeholder="名称（必填）">
+                            </div>
+                            <div class="record-edit-field">
+                                <label class="record-edit-label">备注</label>
+                                <input type="text" class="record-edit-input" data-edit-field="note" value="${escapeHtml(record.note || '')}" placeholder="备注">
+                            </div>
+                            <div class="record-edit-field">
+                                <label class="record-edit-label">金额</label>
+                                <input type="number" class="record-edit-input" data-edit-field="amount" value="${record.amount}" placeholder="金额">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="record-side">
+                        <div class="record-actions">
+                            <button type="button" class="record-action-btn success" data-record-action="save" data-record-id="${record.id}">确定修改</button>
+                            <button type="button" class="record-action-btn" data-record-action="cancel" data-record-id="${record.id}">取消</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
         function displayRecords() {
-            if (filteredRecords.length === 0) {
+            const book = getCurrentBook();
+            if (!book) {
+                recordsSection.innerHTML = '<div class="no-results">暂无礼金大类，请先新增</div>';
+                return;
+            }
+
+            const isExpenseBook = getBookType(book) === 'expense';
+
+            if (!filteredRecords.length) {
                 recordsSection.innerHTML = '<div class="no-results">暂无匹配的记录</div>';
                 return;
             }
 
-            recordsSection.innerHTML = filteredRecords
-                .map(record => record.note && record.note.length > 0 ? `
-                    <div class="record-item">
-                        <div class="record-name">
-                            <span>${record.name}</span>
-                            <button type="button" class="view-all-btn" data-name="${escapeHtml(record.name)}">查看所有</button>
-                        </div>
-                         <div class="record-note"><span class="record-note-type"> 送</span> ${record?.note}</div>
-                        <div class="record-amount">${record.amount}元</div>
-                    </div>
-                `: `
-                    <div class="record-item">
-                        <div class="record-name">
-                            <span>${record.name}</span>
-                            <button type="button" class="view-all-btn" data-name="${escapeHtml(record.name)}">查看所有</button>
-                        </div>
-                        <div class="record-amount">${record.amount}元</div>
-                    </div>
-                `)
-                .join('');
+            recordsSection.innerHTML = filteredRecords.map(record => {
+                if (record.id === editingRecordId) {
+                    return getRecordEditHtml(record, isExpenseBook);
+                }
+                return getRecordDisplayHtml(record, isExpenseBook);
+            }).join('');
         }
 
-        // 更新统计信息
         function updateStats() {
-            const book = accountBooks[currentBookIndex];
+            const book = getCurrentBook();
+            if (!book) {
+                statsTextEl.innerHTML = '暂无数据';
+                return;
+            }
             const totalCount = book.records.length;
-            const totalAmount = book.records.reduce((sum, record) => sum + record.amount, 0);
-
-            totalCountEl.textContent = totalCount;
-            totalAmountEl.textContent = totalAmount.toFixed(2);
+            const totalAmount = book.records.reduce((sum, record) => sum + (Number(record.amount) || 0), 0);
+            statsTextEl.innerHTML = getStatsText(book, totalCount, totalAmount);
         }
 
-        // 启动应用
-        init();
+        init().catch((error) => {
+            console.error(error);
+            showToast('初始化失败，请刷新后重试', 'error');
+        });
     </script>
 </body>
 
